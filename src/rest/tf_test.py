@@ -46,4 +46,9 @@ linear_est.train(train_input_fn)
 for row, result in enumerate(list(linear_est.predict(eval_input_fn))):
     print(f"For the person with the data\n{dfeval.loc[row]},")
     percentage = (int((result['probabilities'][1]*10000))) / 100
-    print(f"the model predicted a survival chance of {str(percentage)}%\n\n--------\n")
+    print(f"the model predicted a survival chance of {str(percentage)}%")
+    if y_eval.loc[row] == 0:
+        print("And they did not make it.")
+    else:
+        print("And they did survive!")
+    print("\n\n--------\n")
