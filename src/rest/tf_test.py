@@ -42,6 +42,8 @@ eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
 linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns)
 
 linear_est.train(train_input_fn)
-result = linear_est.evaluate(eval_input_fn)
 
-print(f"Lessssgoooooo einfach eine AI. Trommelwirbel bitte, die Genauigkeit ist {result['accuracy']}")
+for row, result in enumerate(list(linear_est.predict(eval_input_fn))):
+    print(f"For the person with the data\n{dfeval.loc[row]},")
+    percentage = (int((result['probabilities'][1]*10000))) / 100
+    print(f"the model predicted a survival chance of {str(percentage)}%\n\n--------\n")
