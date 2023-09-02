@@ -51,4 +51,4 @@ for row, result in enumerate(list(linear_est.predict(eval_input_fn))):
         print("And they did not make it.")
     else:
         print("And they did survive!")
-    print("\n\n--------\n")
+    print("\n--------\n")
