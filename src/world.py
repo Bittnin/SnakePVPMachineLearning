@@ -118,7 +118,7 @@ class World:
             otherSnakes = copy.deepcopy([p.snake for p in self.players if p is not player])
             world = copy.deepcopy(self)
             try:
-                direction, memory = func_timeout(0.1, player.ai, (
+                direction, memory = func_timeout(20.0, player.ai, (  # changed the timeout manually
                 copy.deepcopy(player.snake), otherSnakes, world.obstacles, world.bonuses, world))
             except FunctionTimedOut:
                 print("The AI of Player "
